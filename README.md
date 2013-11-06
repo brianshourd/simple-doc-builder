@@ -14,10 +14,15 @@ kind of markdown file. To try it out (it will parse this file,
         --output readme.html
 
 You can see what the resulting readme.html looks like
-[here](http://brianshourd.github.io/simple-doc-builder/readme.html).
+[here](http://brianshourd.github.io/simple-doc-builder/readme.html). 
 
 It's built to be used with `node` and `npm`, so make sure that you have
 those installed.
+
+## Github Repo
+
+You can find all of the code at
+[http://github.com/brianshourd/simple-doc-builder](http://github.com/brianshourd/simple-doc-builder).
 
 ## Usage
 
