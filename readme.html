@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="target-densitydpi=device-dpi" />
+  <title>Simple Doc Builder</title>
+  <link rel="stylesheet" href="resources/base.css" type="text/css"/>
+</head>
+<body>
+
+<div id="sidebar">
+  <a href="#"><img src="resources/star.png"></img></a>
+  
+  <a class="toc_title" href="#about">
+    About
+  </a>
+  
+  
+  <a class="toc_title" href="#reasoning">
+    Reasoning
+  </a>
+  
+  <ul class="toc_section">
+    
+    <li>- <a href="#consistency">Consistency</a> -</li>
+    
+    <li>- <a href="#ease-of-install">Ease of Install</a> -</li>
+    
+    <li>- <a href="#third-reason">Third Reason</a> -</li>
+    
+  </ul>
+  
+  
+  <a class="toc_title" href="#usage">
+    Usage
+  </a>
+  
+  <ul class="toc_section">
+    
+    <li>- <a href="#basic-usage">Basic Usage</a> -</li>
+    
+    <li>- <a href="#file-specifications">File Specifications</a> -</li>
+    
+    <li>- <a href="#templates">Templates</a> -</li>
+    
+  </ul>
+  
+  
+</div>
+
+<div class="container">
+
+  <h1>Simple Doc Builder</h1>
+
+  
+  <div id="about">
+    <h2>About</h2>
+    <p>This is a small script to generate a static html page out of a specific
+kind of markdown file. To try it out (it will parse this file,
+<code>README.md</code>, just fine):</p>
+
+<pre><code>git clone https://github.com/brianshourd/simple-doc-builder.git
+cd simple-doc-builder
+npm install
+node simple-doc-builder.js --input README.md \
+    --template resources/defaultTemplate.html \ 
+    --output readme.html</code></pre>
+
+<p>It&#39;s built to be used with <code>node</code> and <code>npm</code>, so make sure that you have
+those installed.</p>
+
+    
+  </div>
+  
+  <div id="reasoning">
+    <h2>Reasoning</h2>
+    <p>I had a couple of reasons for building this.</p>
+
+    
+    <div class="entry" id="consistency">
+      <h3>Consistency - </h3>
+      <div class="body">
+        <p>My markdown files always are written the same way. First-level header at
+the top for the title, sections separated by second-level headers,
+sub-sections separated by third-level headers with (sometimes)
+fourth-level headers for subtitles. If you want an example - see this
+file that you are reading right now.</p>
+
+<p>Given that all my files look the same, I should be able to have a <em>bit</em>
+more control over the output. Maybe build a table of contents. Maybe
+some nice css styling.</p>
+
+<p>Note that the fantastic <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> does
+this, but the dependencies can be a bit large, and it is honestly far
+too complex for the simplicity that I wanted. Which brings me to my next
+reason.</p>
+      </div>
+    </div>
+    
+    <div class="entry" id="ease-of-install">
+      <h3>Ease of Install - </h3>
+      <div class="body">
+        <p>I&#39;m hooked on the way <code>npm</code> handles dependencies. It&#39;s pretty awesome.
+Now I know that if I ever want to use this script again, I can just <code>npm
+install</code> and I&#39;m good.</p>
+      </div>
+    </div>
+    
+    <div class="entry" id="third-reason">
+      <h3>Third Reason - (Subtitle)</h3>
+      <div class="body">
+        <p>I actually don&#39;t have a third reason, I just wanted to include one for
+the sake of using this README.md as a sample input.</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="usage">
+    <h2>Usage</h2>
+    
+
+    
+    <div class="entry" id="basic-usage">
+      <h3>Basic Usage - </h3>
+      <div class="body">
+        <pre><code>node simple-doc-builder.js -i input.mkdn -t template.html -o output.html</code></pre>
+
+<p>There are three flags:</p>
+
+<ul><li>-i | --input: Required. Signifies the input file. Should be a
+markdown-formatted file.</li><li>-t | --template: Required. Signifies the template file. Should be an
+html file with <a href="http://handlebarsjs.com">handlebars.js</a>-style
+templates.</li><li>-o | --output: Optional. The name of the file to output to (caution:
+overwrites!). If not supplied, output is piped to stdout.</li></ul>
+      </div>
+    </div>
+    
+    <div class="entry" id="file-specifications">
+      <h3>File Specifications - </h3>
+      <div class="body">
+        <p>Your input file should follow a certain format. Some requirements:</p>
+
+<ul><li>All headers are marked with the <code>&#39;#&#39;</code> notation, followed by a space.
+Other markdown-style header declarations are not allowed.</li><li>First line is first-level header marked with <code>&#39;# &#39;</code>. There are no
+other first-level headers in the document.</li><li>Immediately afterward, there is a second-level header marking the
+title of the first section. There may be as many second-level headers
+in the document as you like.</li><li>Between two first-level headers, there are zero or more third-level
+headers, specifying subsections.</li><li>If a third-level header is followed by a fourth-level header, that
+header is considered to be a subtitle of the subsection.</li><li>Reference-style linking won&#39;t work. All links must be of the form
+<code>[wikipedia](http://wikipedia.org)</code>.</li></ul>
+
+<p>Other than that, it just uses normal markdown. It uses
+<a href="https://github.com/evilstreak/markdown-js">markdown-js</a> with original,
+Gruber-style markdown for markdown parsing.</p>
+      </div>
+    </div>
+    
+    <div class="entry" id="templates">
+      <h3>Templates - </h3>
+      <div class="body">
+        <p>The script uses <a href="http://handlebarsjs.com">Handlebars.js</a> for template
+processing. The following object is passed to the template:</p>
+
+<pre><code>{
+    title: String,
+    sections: [{
+        title: String,
+        id: String,
+        body: String (HTML),
+        subsections: [{
+            title: String,
+            subtitle: String,
+            id: String,
+            body: String (HTML)
+        }]
+    }]
+}</code></pre>
+
+<p>Note that the two <code>body</code> properties are strings that are already
+properly formatted HTML. In particular, in your template, you have to
+use the &#39;triple stache&#39;:</p>
+
+<pre><code>{{#each subsections}}
+&lt;div class=&quot;entry&quot; id=&quot;{{id}}&quot;&gt;
+  &lt;h3&gt;{{title}} - {{subtitle}}&lt;/h3&gt;
+  &lt;div class=&quot;body&quot;&gt;
+    {{{body}}}
+  &lt;/div&gt;
+&lt;/div&gt;
+{{/each}}</code></pre>
+
+<p>A sample template is included (<code>resources/defaultTemplate.html</code>) - look
+through that to see how some things work.</p>
+
+<p>The way the ids are created guarantees that each id will be unique -
+even if two sections/subsections have the same name (or stub to the same
+name).</p>
+      </div>
+    </div>
+    
+  </div>
+  
+
+  <div id="footer">
+    <p>Background available from <a href="http://subtlepatterns.com/diagmonds/">Subtle Patterns</a>, used under a Creative Commons License</p>
+  </div>
+</div>
+</body>
+</html>
