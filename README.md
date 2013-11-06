@@ -19,39 +19,6 @@ You can see what the resulting readme.html looks like
 It's built to be used with `node` and `npm`, so make sure that you have
 those installed.
 
-## Reasoning
-
-I had a couple of reasons for building this.
-
-### Consistency
-
-My markdown files always are written the same way. First-level header at
-the top for the title, sections separated by second-level headers,
-sub-sections separated by third-level headers with (sometimes)
-fourth-level headers for subtitles. If you want an example - see this
-file that you are reading right now.
-
-Given that all my files look the same, I should be able to have a *bit*
-more control over the output. Maybe build a table of contents. Maybe
-some nice css styling.
-
-Note that the fantastic [pandoc](http://johnmacfarlane.net/pandoc/) does
-this, but the dependencies can be a bit large, and it is honestly far
-too complex for the simplicity that I wanted. Which brings me to my next
-reason.
-
-### Ease of Install
-
-I'm hooked on the way `npm` handles dependencies. It's pretty awesome.
-Now I know that if I ever want to use this script again, I can just `npm
-install` and I'm good.
-
-### Third Reason
-#### (Subtitle)
-
-I actually don't have a third reason, I just wanted to include one for
-the sake of using this README.md as a sample input.
-
 ## Usage
 
 ### Basic Usage
@@ -129,4 +96,31 @@ through that to see how some things work.
 The way the ids are created guarantees that each id will be unique -
 even if two sections/subsections have the same name (or stub to the same
 name).
+
+## Reasoning
+
+I had a couple of reasons for building this.
+
+### Consistency
+
+My markdown files always are written the same way. First-level header at
+the top for the title, sections separated by second-level headers,
+sub-sections separated by third-level headers with (sometimes)
+fourth-level headers for subtitles. If you want an example - see this
+file that you are reading right now.
+
+Given that all my files look the same, I should be able to have a *bit*
+more control over the output. Maybe build a table of contents. Maybe
+some nice css styling.
+
+Note that the fantastic [pandoc](http://johnmacfarlane.net/pandoc/) does
+this, but the dependencies can be a bit large, and it is honestly far
+too complex for the simplicity that I wanted. Which brings me to my next
+reason.
+
+### Ease of Install
+
+I'm hooked on the way `npm` handles dependencies. It's pretty awesome.
+Now I know that if I ever want to use this script again, I can just `npm
+install` and I'm good.
 
