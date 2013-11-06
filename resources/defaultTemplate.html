@@ -37,7 +37,7 @@
 
     {{#each subsections}}
     <div class="entry" id="{{id}}">
-      <h3>{{title}} - {{subtitle}}</h3>
+      <h3>{{title}}{{#if subtitle}} - {{subtitle}}{{/if}}</h3>
       <div class="body">
         {{{body}}}
       </div>

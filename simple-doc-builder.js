@@ -112,7 +112,7 @@ function processEntry(lines) {
     }
     return {
         title: title,
-        subtitle: subtitle,
+        //subtitle: subtitle,
         id: getId(title),
         body: md.toHTML(lines.join('\n'))
     };
