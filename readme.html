@@ -18,21 +18,6 @@
   </a>
   
   
-  <a class="toc_title" href="#reasoning">
-    Reasoning
-  </a>
-  
-  <ul class="toc_section">
-    
-    <li>- <a href="#consistency">Consistency</a> -</li>
-    
-    <li>- <a href="#ease-of-install">Ease of Install</a> -</li>
-    
-    <li>- <a href="#third-reason">Third Reason</a> -</li>
-    
-  </ul>
-  
-  
   <a class="toc_title" href="#usage">
     Usage
   </a>
@@ -44,6 +29,19 @@
     <li>- <a href="#file-specifications">File Specifications</a> -</li>
     
     <li>- <a href="#templates">Templates</a> -</li>
+    
+  </ul>
+  
+  
+  <a class="toc_title" href="#reasoning">
+    Reasoning
+  </a>
+  
+  <ul class="toc_section">
+    
+    <li>- <a href="#consistency">Consistency</a> -</li>
+    
+    <li>- <a href="#ease-of-install">Ease of Install</a> -</li>
     
   </ul>
   
@@ -68,53 +66,12 @@ node simple-doc-builder.js --input README.md \
     --template resources/defaultTemplate.html \ 
     --output readme.html</code></pre>
 
+<p>You can see what the resulting readme.html looks like
+<a href="http://brianshourd.github.io/simple-doc-builder/readme.html">here</a>.</p>
+
 <p>It&#39;s built to be used with <code>node</code> and <code>npm</code>, so make sure that you have
 those installed.</p>
 
-    
-  </div>
-  
-  <div id="reasoning">
-    <h2>Reasoning</h2>
-    <p>I had a couple of reasons for building this.</p>
-
-    
-    <div class="entry" id="consistency">
-      <h3>Consistency - </h3>
-      <div class="body">
-        <p>My markdown files always are written the same way. First-level header at
-the top for the title, sections separated by second-level headers,
-sub-sections separated by third-level headers with (sometimes)
-fourth-level headers for subtitles. If you want an example - see this
-file that you are reading right now.</p>
-
-<p>Given that all my files look the same, I should be able to have a <em>bit</em>
-more control over the output. Maybe build a table of contents. Maybe
-some nice css styling.</p>
-
-<p>Note that the fantastic <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> does
-this, but the dependencies can be a bit large, and it is honestly far
-too complex for the simplicity that I wanted. Which brings me to my next
-reason.</p>
-      </div>
-    </div>
-    
-    <div class="entry" id="ease-of-install">
-      <h3>Ease of Install - </h3>
-      <div class="body">
-        <p>I&#39;m hooked on the way <code>npm</code> handles dependencies. It&#39;s pretty awesome.
-Now I know that if I ever want to use this script again, I can just <code>npm
-install</code> and I&#39;m good.</p>
-      </div>
-    </div>
-    
-    <div class="entry" id="third-reason">
-      <h3>Third Reason - (Subtitle)</h3>
-      <div class="body">
-        <p>I actually don&#39;t have a third reason, I just wanted to include one for
-the sake of using this README.md as a sample input.</p>
-      </div>
-    </div>
     
   </div>
   
@@ -124,7 +81,7 @@ the sake of using this README.md as a sample input.</p>
 
     
     <div class="entry" id="basic-usage">
-      <h3>Basic Usage - </h3>
+      <h3>Basic Usage</h3>
       <div class="body">
         <pre><code>node simple-doc-builder.js -i input.mkdn -t template.html -o output.html</code></pre>
 
@@ -139,7 +96,7 @@ overwrites!). If not supplied, output is piped to stdout.</li></ul>
     </div>
     
     <div class="entry" id="file-specifications">
-      <h3>File Specifications - </h3>
+      <h3>File Specifications</h3>
       <div class="body">
         <p>Your input file should follow a certain format. Some requirements:</p>
 
@@ -159,7 +116,7 @@ Gruber-style markdown for markdown parsing.</p>
     </div>
     
     <div class="entry" id="templates">
-      <h3>Templates - </h3>
+      <h3>Templates</h3>
       <div class="body">
         <p>The script uses <a href="http://handlebarsjs.com">Handlebars.js</a> for template
 processing. The following object is passed to the template:</p>
@@ -198,6 +155,42 @@ through that to see how some things work.</p>
 <p>The way the ids are created guarantees that each id will be unique -
 even if two sections/subsections have the same name (or stub to the same
 name).</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="reasoning">
+    <h2>Reasoning</h2>
+    <p>I had a couple of reasons for building this.</p>
+
+    
+    <div class="entry" id="consistency">
+      <h3>Consistency</h3>
+      <div class="body">
+        <p>My markdown files always are written the same way. First-level header at
+the top for the title, sections separated by second-level headers,
+sub-sections separated by third-level headers with (sometimes)
+fourth-level headers for subtitles. If you want an example - see this
+file that you are reading right now.</p>
+
+<p>Given that all my files look the same, I should be able to have a <em>bit</em>
+more control over the output. Maybe build a table of contents. Maybe
+some nice css styling.</p>
+
+<p>Note that the fantastic <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> does
+this, but the dependencies can be a bit large, and it is honestly far
+too complex for the simplicity that I wanted. Which brings me to my next
+reason.</p>
+      </div>
+    </div>
+    
+    <div class="entry" id="ease-of-install">
+      <h3>Ease of Install</h3>
+      <div class="body">
+        <p>I&#39;m hooked on the way <code>npm</code> handles dependencies. It&#39;s pretty awesome.
+Now I know that if I ever want to use this script again, I can just <code>npm
+install</code> and I&#39;m good.</p>
       </div>
     </div>
     
