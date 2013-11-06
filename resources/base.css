@@ -72,3 +72,9 @@ div#footer {
     font-size: 11px;
     margin-top: 40px;
 }
+pre {
+    background: #000000;
+    font-size: 14px;
+    overflow-x: auto;
+    padding-left: 20px;
+}

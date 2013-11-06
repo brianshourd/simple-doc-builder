@@ -1,4 +1,5 @@
 var fs = require('fs');
+//var process = require('process');
 var md = require('markdown').markdown;
 var handlebars = require('handlebars');
 var _ = require('underscore');
@@ -6,6 +7,20 @@ _.str = require('underscore.string');
 _.mixin(_.str.exports());
 _.str.include('Underscore.string', 'string');
 
+// Set optimist to handle possible flags
+var usageStr = 'Usage:\n  node parse.js -i input.mkdn -t template.html -o output.html';
+var argv = require('optimist')
+    .usage(usageStr)
+    .alias('i', 'input')
+    .describe('i', 'Input file (markdown)')
+    .alias('t', 'template')
+    .describe('t', 'Template file (handlebars-style html)')
+    .alias('o', 'output')
+    .describe('o', 'Output file (defaults to stdout)')
+    .demand(['i', 't'])
+    .argv;
+
+// Global lookup reference for header levels
 var headerLevels = ['', '# ', '## ', '### ', '#### ', '##### '];
 
 var config = {
@@ -59,10 +74,10 @@ function extractByHeader(level, lines) {
 
 // Goal: given a section (lines), turn it into a better formatted piece
 // of data:
-// { description: str (html),
+// { body: str (html),
 //   title: str,
 //   id: str,
-//   entries: [{
+//   subsections: [{
 //      title: str,
 //      subtitle: str,
 //      id: str,
@@ -75,9 +90,9 @@ function processSection(lines) {
     var dlines = section.before;
     ret.title = _.trim(dlines[0], headerLevels[2]);
     dlines = _.tail(dlines);
-    ret.description = md.toHTML(dlines.join('\n'));
+    ret.body = md.toHTML(dlines.join('\n'));
     ret.id = getId(ret.title);
-    ret.entries = _.map(section.chunks, processEntry);
+    ret.subsections = _.map(section.chunks, processEntry);
     return ret;
 }
 
@@ -119,13 +134,22 @@ function create(inputFile, templateFile) {
     // Get the top-level sections
     doc.sections = extractByHeader(2, lines).chunks;
 
-    // In each section, split by entries
+    // In each section, split by subsections
     doc.sections = _.map(doc.sections, processSection);
 
     var template = handlebars.compile(fs.readFileSync(templateFile, {encoding: 'utf8'}));
     return template(doc);
 }
 
+var output = create(argv.input, argv.template);
+if (argv.output) {
+    fs.writeFileSync(argv.output, output);
+} else {
+    console.log(output);
+}
+
+/*
 var output = create(config.source, config.template);
 console.log(output);
+*/
 
