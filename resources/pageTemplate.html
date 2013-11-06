@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="target-densitydpi=device-dpi" />
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="resources/base.css" type="text/css"/>
+</head>
+<body>
+
+<div id="sidebar">
+  <img src="resources/star.png"></img>
+  {{#each sections}}
+  <a class="toc_title" href="#{{id}}">
+    {{title}}
+  </a>
+  {{#if entries}}
+  <ul class="toc_section">
+    {{#each entries}}
+    <li>- <a href="#{{id}}">{{title}}</a> -</li>
+    {{/each}}
+  </ul>
+  {{/if}}
+  {{/each}}
+</div>
+
+<div class="container">
+
+  <h1>{{title}}</h1>
+
+  {{#each sections}}
+  <div id="{{id}}">
+    <h2>{{title}}</h2>
+    {{{description}}}
+
+    {{#each entries}}
+    <div class="entry" id="{{id}}">
+      <h3>{{title}} - {{subtitle}}</h3>
+      <div class="body">
+        {{{body}}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+
+  <div id="footer">
+    <p>Background available from <a href="http://subtlepatterns.com/diagmonds/">Subtle Patterns</a>, used under a Creative Commons License</p>
+  </div>
+</div>
+</body>
+</html>

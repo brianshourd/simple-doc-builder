@@ -1,0 +1,12 @@
+{
+    "name": "gm-idea-a-day-builder",
+    "version": "0.0.1",
+    "author": "Brian Shourd <brian.shourd@gmail.com>",
+    "description": "Builds the html for my GM Idea-A-Day challenge",
+    "dependencies": {
+        "underscore": "*",
+        "underscore.string": "*",
+        "markdown": "*",
+        "handlebars": "*"
+    }
+}
